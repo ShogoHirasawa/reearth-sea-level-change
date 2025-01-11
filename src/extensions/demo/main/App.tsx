@@ -1,10 +1,14 @@
 import { Card } from "@/shared/components/ui/card";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
-import useHooks from "./hooks";
+import { useSeaLevel } from "./hooks"; 
 
 function App() {
-  const {} = useHooks();
+  const { seaLevel, handleSliderChange } = useSeaLevel(0);
+
+  // スライダーの最小値・最大値
+  const MIN = 0;
+  const MAX = 3687;
   return (
     <div className="p-4">
       {/* カードコンポーネント */}
@@ -19,17 +23,16 @@ function App() {
           <span>0m</span>
           <Input
             type="range"
-            min="0"
-            max="3687"
-            defaultValue="0"
-            className="flex-1 slider-custom"
+            min={MIN}
+            max={MAX}
+            value={seaLevel}         
+            onChange={handleSliderChange}
+            className="slider-custom flex-1"
           />
-          <span>3687m</span>
+          <span>{MAX}m</span>
         </div>
-
-        {/* 現在の海面高さを表示する欄：とりあえず固定値 */}
         <div className="mt-2">
-          現在の海面高さ: <strong>0m</strong>
+          現在の海面高さ: <strong>{seaLevel}m</strong>
         </div>
       </Card>
     </div>
