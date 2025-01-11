@@ -4,5 +4,53 @@ body {
 }
 
 :root {
-  --background: "transparent"; /* Define the initial value of your CSS variable */
+  --background: "transparent";
+}
+
+
+input[type="range"].slider-custom {
+  -webkit-appearance: none; 
+  -moz-appearance: none;   
+  appearance: none;
+  margin: 0; 
+  padding: 0;
+  width: 100%;  
+  cursor: pointer;
+  border: none; 
+  outline: none;
+  box-shadow: none;
+}
+
+/* ===== トラック部分 (Chrome/Safari) ===== */
+input[type="range"].slider-custom::-webkit-slider-runnable-track {
+  height: 6px;              /* トラックの高さ(好みで調整) */
+  background: #ccc;         /* ここを指定しないと見えなくなる */
+  border-radius: 3px;       /* 少し角を丸める */
+}
+
+/* ===== ノブ部分 (Chrome/Safari) ===== */
+input[type="range"].slider-custom::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #2E90FA;      /* 青いノブ */
+  margin-top: -5px;         /* トラック高さ6pxとのバランス調整 */
+  cursor: pointer;
+}
+
+/* ===== Firefox向け トラック ===== */
+input[type="range"].slider-custom::-moz-range-track {
+  height: 6px;          
+  background: #ccc;     
+  border-radius: 3px;
+}
+
+/* ===== Firefox向け ノブ ===== */
+input[type="range"].slider-custom::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #2E90FA;
+  cursor: pointer;
 }
